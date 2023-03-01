@@ -34,7 +34,7 @@ window.toggleDebugging = () => state.set(s => ({
 
 const debug = (...args) => state.get().debug && console.log(...args)
 
-const modeClosure = (mainContainer, getState, setState) => {
+const modeClosure = (getState, setState) => {
   const indicatorElement = document.createElement('div')
   indicatorElement.setAttribute('style', 'position: fixed; z-index:9001; bottom:0; left: 0; background-color: grey; color: white; padding: .3em; font-family: sans-serif;')
   indicatorElement.innerHTML = 'NORMAL'

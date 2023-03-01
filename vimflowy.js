@@ -1,22 +1,36 @@
 
-const mainContainer = document.getElementById('app');
-const {flashMode, goToInsertMode, goToNormalMode, goToVisualMode, goToReplaceMode, goToFindMode, goToInnerMode, goToAfterMode} = modeClosure(mainContainer, state.get, state.set);
+const {flashMode, goToInsertMode, goToNormalMode, goToVisualMode, goToReplaceMode, goToFindMode, goToInnerMode, goToAfterMode} = modeClosure(state.get, state.set);
 
 WFEventListener = event => 
 {
   // console.log(event);
   if(event === "documentReady")
+  {
     requestAnimationFrame(fixFocus);
+
+    const mainContainer = document.getElementById('app');
+
+    mainContainer.addEventListener('mousedown', event => 
+    { 
+      mouseClickIntoInsertMode(event);
+    });
+
+    mainContainer.addEventListener('keyup', event => 
+    { 
+      HandleKeyup(event);
+    });
+
+    mainContainer.addEventListener('keydown', event => 
+    { 
+      HandleKeydown(event);
+    })
+
+  }
 
 };
 
-mainContainer.addEventListener('mousedown', event => 
-{ 
-  mouseClickIntoInsertMode(event);
-});
-
-mainContainer.addEventListener('keyup', event => 
-{ 
+function HandleKeyup(event)
+{
   HandleEasyMotion_KeyUp();
   reselectItemsBeingMoved();
   updateKeyBuffer_Keyup(event);
@@ -32,11 +46,10 @@ mainContainer.addEventListener('keyup', event =>
   // }
 
   // console.log("-- KeyUP event -- ")
+}
 
-});
-
-mainContainer.addEventListener('keydown', event => 
-{ 
+function HandleKeydown(event)
+{
     // console.log("-- KeyDOWN event -- ")
     if(HandleEasyMotion_KeyDown(event))
     {
@@ -109,7 +122,7 @@ mainContainer.addEventListener('keydown', event =>
         updateTimeTagCounter();
 
     // console.log("currentOffset keydown: " + state.get().anchorOffset);
-})
+}
 
 // we can't use WF.getSelection()
 // because WF.setSelection() will 
