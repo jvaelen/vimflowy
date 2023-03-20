@@ -2,7 +2,7 @@
   "name": "Vimflowy",
   "short_name": "Vimflowy",
   "description": "Vim shortcuts for Workflowy",
-  "version": "0.0.4.8",
+  "version": "0.0.4.9",
   "manifest_version": 2,
   "icons": { "48": "icon48.png", "128": "icon128.png" },
   "content_scripts": 
