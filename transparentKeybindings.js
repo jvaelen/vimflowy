@@ -588,6 +588,9 @@ const transparentActionMap =
 	  },
 	  'jk': e => 
 	  {
+		if (!OPTIONS.jkToEsc) {
+			return;
+		}
 	    // guard against accidently pressing jk while in the menu 
 		const focusedItem = WF.focusedItem();
 		if(!focusedItem)

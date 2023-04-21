@@ -5,26 +5,26 @@
   "version": "0.0.4.9",
   "manifest_version": 2,
   "icons": { "48": "icon48.png", "128": "icon128.png" },
-  "content_scripts": 
+  "content_scripts":
   [
     {
       "matches": ["https://workflowy.com/*", "https://*.workflowy.com/*"],
       "run_at": "document_start",
-      "js": 
+      "js":
       [
         "contentscript_start.js"
       ]
-    }, 
+    },
     {
       "matches": ["https://workflowy.com/*", "https://*.workflowy.com/*"],
       "run_at": "document_idle",
-      "js": 
+      "js":
       [
         "contentscript_idle.js"
       ]
     }
   ],
-  "web_accessible_resources": [ 
+  "web_accessible_resources": [
     "state.js",
     "TimeTagCounter.js",
     "easyMotion.js",
@@ -32,10 +32,13 @@
     "vimflowyFunctionLibrary.js",
     "keybindings.js",
     "transparentKeybindings.js",
-    "vimflowy.js"
+    "vimflowy.js",
+    "options.js"
   ],
   "permissions": [
     "https://workflowy.com/*",
-    "https://*.workflowy.com/*"
-	]
+    "https://*.workflowy.com/*",
+    "storage"
+	],
+  "options_page": "options.html"
 }
